@@ -1,9 +1,12 @@
+#This file contain the functions used in the screen.py script
 from random import randint
 
-WID, HEI =  82, 42
-def creat_grid():
+#Creating the grid
+def creat_grid(WID=82, HEI=42):
     return [[0 for _ in range(HEI)] for _ in range(WID)]
 
+
+#Setting the rules of game of life
 def is_alive(grid, pos):
     ngb = []
     ngb += [grid[pos[0]-1][pos[1]-1]]
@@ -26,23 +29,3 @@ def is_alive(grid, pos):
             return 1
         else:
             return 0
-
-
-if __name__ == '__main__':
-    c =  [[0, 1, 2, 3],
-          [4, 5, 6, 7], 
-          [8, 9, 10, 11]]
-    ngb = []
-    pos = [1, 2]
-
-    ngb += [c[pos[0]-1][pos[1]-1]]
-    ngb += [c[pos[0]-1][pos[1]]]
-    ngb += [c[pos[0]-1][pos[1]+1]]
-
-    ngb += [c[pos[0]+1][pos[1]-1]]
-    ngb += [c[pos[0]+1][pos[1]]]
-    ngb += [c[pos[0]+1][pos[1]+1]]  
-
-    ngb += [c[pos[0]][pos[1]-1]]
-    ngb += [c[pos[0]][pos[1]+1]]
-    print(ngb)
