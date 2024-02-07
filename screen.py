@@ -1,7 +1,9 @@
+#This file is resposable for printing the game and make it interactable
 import pygame
 from pygame.locals import *
 from main import *
 
+#This function shows the game in the generated screen
 def show_grid():
     rect_size = screen_size[0]//(WID-2), screen_size[1]//(HEI-2)
     for x in range(WID):
@@ -11,6 +13,8 @@ def show_grid():
             else:
                 pygame.draw.rect(screen, (255, 255, 255), ((x*rect_size[0]+1, y*rect_size[1]+1), (rect_size[0]-1, rect_size[1]-1)))
 
+
+#Initalizing the pygame and creating the screen
 pygame.init()
 
 screen_size = (1200, 600)
@@ -23,12 +27,15 @@ new_grid = creat_grid()
 
 pressed = [0, 0]
 
+#Starting the infinit main loop
 fps = 1
 clock = pygame.time.Clock()
 while True:
     clock.tick(fps)
     screen.fill((0, 0, 0))
 
+
+#Reading the keyboard inputs
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == K_UP:
@@ -50,6 +57,8 @@ while True:
         if event.type == QUIT:
             pygame.quit()
 
+
+#Changing the state of a celula
     if pressed[0]:
         pos = pygame.mouse.get_pos()
         index = pos[0]//(screen_size[0]//(WID-2)), pos[1]//(screen_size[1]//(HEI-2))
